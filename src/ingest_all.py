@@ -1,4 +1,6 @@
 import os
+import sys
+import shutil
 from pathlib import Path
 from typing import List
 from dotenv import load_dotenv
@@ -27,8 +29,19 @@ VECTOR_DB_PATH = "./chroma_db"
 COLLECTION_NAME = "retirement_advisor"
 EMBEDDING_MODEL = "text-embedding-3-small"
 
-# Explicit Tesseract Path (Ensure this matches your system)
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+#Windows (local development)
+if os.name == 'nt':
+    # Explicit Tesseract Path (Ensure this matches your system)
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+else:
+    #On Linux (Streamlit Cloud), Tesseract is usually in the PATH automatically.
+    tesseract_path = shutil.which("tesseract")
+    if tesseract_path:
+        pytesseract.pytesseract.tesseract_cmd = tesseract_path
+    else:
+        # If running "fast" strategy, this warning is fine. 
+        # If "hi_res", this will crash later.
+        print("Warning: Tesseract not found in PATH")
 
 load_dotenv(dotenv_path="./cred.env")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
@@ -52,7 +65,7 @@ def load_documents_from_folder(directory: Path, doc_type: str) -> List[Document]
             # Intead of Using hi_res strategy , used fast strategy for faster pdf reading
             loader = UnstructuredLoader(
                 file_path=str(file_path),
-                strategy="fast", ## chanfing from 'hi_res' to fast because of perfromance
+                strategy="fast", ## changing from 'hi_res' to fast because of perfromance
                 mode="elements",
                 infer_table_structure=True,
                 chunking_strategy="by_title"

@@ -1,0 +1,28 @@
+# --- Core Application ---
+streamlit>=1.32.0          # The Frontend UI
+python-dotenv>=1.0.0       # Managing API keys (.env)
+
+# --- LangChain Ecosystem ---
+langchain>=0.1.0           # Main framework
+langchain-core             # Base abstractions
+langchain-community        # Third-party integrations (Loaders, VectorStores)
+langchain-openai           # OpenAI LLM wrappers
+langchain-text-splitters   # Text splitting utilities
+
+# --- Orchestration (The "Brain") ---
+langgraph                  # State machine for Agentic workflow
+
+# --- Vector Database ---
+chromadb>=0.4.0            # The database storing your embeddings
+
+# --- Document Processing (The "Ingestion") ---
+unstructured               # Core library for parsing PDF/HTML
+pytesseract                # Python wrapper for the Tesseract OCR engine
+pdf2image                  # Helper often needed by Unstructured for PDFs
+openpyxl                   # For parsing Excel files (.xlsx)
+python-docx                # For parsing Word docs (.docx)
+
+# --- Web & Utilities ---
+requests                   # For the Web Search tool (if manually built)
+beautifulsoup4             # For parsing HTML from web searches
+tiktoken                   # Tokenizer used by OpenAI (crucial for chunking)
