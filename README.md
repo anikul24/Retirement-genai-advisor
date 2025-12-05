@@ -56,7 +56,9 @@ graph TD
     ResponseNode --> UINode
 ```
 
-Key Features
+
+## ✔ Key Features
+
 Agentic Routing: Uses GPT-4o to intelligently distinguish between queries requiring semantic search (policies) vs. deterministic calculation (savings growth).
 
 Domain-Specific RAG: Grounded in a curated vector database of official PDFs (IRS Pub 590, SSA Handbook), minimizing hallucinations.
@@ -69,7 +71,7 @@ Personalized Document Analysis: Users can upload their own 401(k) statements; th
 
 Safety & Compliance: Custom personas (Retiree vs. Financial Planner) with strict system prompts to enforce citation of sources.
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 Orchestration: LangChain, LangGraph
 
 LLM: OpenAI GPT-4o / GPT-3.5-turbo
@@ -82,7 +84,8 @@ Frontend: Streamlit
 
 DevOps: Docker, GitHub Actions (CI/CD)
 
-🚀 Getting Started
+## 🚀 Getting Started
+
 Prerequisites
 Python 3.10+
 
@@ -92,10 +95,9 @@ Windows: Installer (Add to PATH)
 
 Linux: sudo apt-get install tesseract-ocr
 
-Installation
-Clone the repository
+Installation :Clone the repository
 
-Bash
+Bash 
 
 git clone [https://github.com/yourusername/retirement-genai-advisor.git](https://github.com/yourusername/retirement-genai-advisor.git)
 cd retirement-genai-advisor
@@ -119,7 +121,8 @@ Run the Application
 Bash
 
 streamlit run app.py
-🐳 Docker Deployment
+
+## 🐳 Docker Deployment
 The application is fully containerized for production deployment.
 
 Bash
@@ -130,8 +133,8 @@ docker build -t retirement-advisor .
 # Run the container
 docker run -p 8501:8501 --env-file .env retirement-advisor
 📂 Project Structure
-Plaintext
 
+```
 ├── .github/workflows/   # CI/CD Pipelines
 ├── chroma_db/           # Persistent Vector Database
 ├── data/
@@ -146,6 +149,7 @@ Plaintext
 ├── app.py               # Streamlit Frontend
 ├── Dockerfile           # Production Image Config
 └── requirements.txt     # Python Dependencies
+```
 
 🛡️ License
 This project is for educational and portfolio purposes. Not financial advice.
