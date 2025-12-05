@@ -7,9 +7,10 @@ from serpapi import GoogleSearch
 
 load_dotenv(dotenv_path="./cred.env")
 
-SERP_API_KEY = os.environ.get("SERP_API_KEY")
+SERP_API_KEY = os.environ.get("SERP_API_KEY", override=True)
 
-
+if not SERP_API_KEY:
+    raise ValueError("SERP_API_KEY not found in environment variables")
 
 @tool('web_search')
 def web_search(query: str) -> str:

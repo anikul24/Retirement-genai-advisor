@@ -43,8 +43,11 @@ else:
         # If "hi_res", this will crash later.
         print("Warning: Tesseract not found in PATH")
 
-load_dotenv(dotenv_path="./cred.env")
+load_dotenv(dotenv_path="./cred.env", override=True)
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY not found in environment variables")
 
 def load_documents_from_folder(directory: Path, doc_type: str) -> List[Document]:
     """Loads PDF, DOCX, TXT, XLSX from a specific folder."""

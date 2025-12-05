@@ -13,6 +13,11 @@ from tools_user import create_user_doc_tool
 st.set_page_config(page_title="Retirement GenAI Advisor", layout="wide")
 st.title("GenAI Retirement Advisor")
 
+VECTOR_DB_PATH = "./chroma_db"
+
+if not os.path.exists(VECTOR_DB_PATH):
+    st.error("ChromaDB not found! Please check your repo structure.")
+
 
 # --- SESSION STATE INITIALIZATION ---
 if "messages" not in st.session_state:
