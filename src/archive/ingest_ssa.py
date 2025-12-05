@@ -53,12 +53,15 @@ PINECONE_API_KEY = os.environ.get("PINECONE_API_KEY")
 VECTOR_DB_TYPE = 'CHROMA' # 'PINECONE'
 PERSIST_DIRECTORY = "./chroma_data"
 VECTOR_INDEX = os.environ.get("VECTOR_INDEX", "retirement-ssa-index")
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", override=True)
 # Embedding model name
 EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", "text-embedding-3-small")
 # Throttle between requests
 THROTTLE_SECONDS = float(os.environ.get("CRAWL_THROTTLE", "1.0"))
 
+
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY not found in environment variables")
 
 BROWSER_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
