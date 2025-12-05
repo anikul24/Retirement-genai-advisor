@@ -127,12 +127,13 @@ The application is fully containerized for production deployment.
 
 Bash
 
-# Build the image
+## Build the image
 docker build -t retirement-advisor .
 
-# Run the container
+## Run the container
 docker run -p 8501:8501 --env-file .env retirement-advisor
-📂 Project Structure
+
+## 📂 Project Structure
 
 ```
 ├── .github/workflows/   # CI/CD Pipelines
