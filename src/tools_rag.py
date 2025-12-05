@@ -6,8 +6,9 @@ import chromadb
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.tools import tool
-from langchain_classic.chains import ConversationalRetrievalChain
-from langchain_classic.memory import ConversationBufferWindowMemory
+#from langchain.chains import ConversationalRetrievalChain
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferWindowMemory
 from dotenv import load_dotenv
 
 load_dotenv(dotenv_path="./cred.env")
