@@ -43,7 +43,8 @@ else:
         # If "hi_res", this will crash later.
         print("Warning: Tesseract not found in PATH")
 
-load_dotenv(dotenv_path="./cred.env", override=True)
+load_dotenv(dotenv_path="./cred.env")
+load_dotenv(override=True)
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 if not OPENAI_API_KEY:
