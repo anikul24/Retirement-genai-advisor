@@ -9,7 +9,9 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path="./cred.env")
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", override=True)
+load_dotenv(override=True)
+
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 if not OPENAI_API_KEY:
     raise ValueError("OPENAI_API_KEY not found in environment variables")
