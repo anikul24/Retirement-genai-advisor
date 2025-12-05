@@ -63,7 +63,7 @@ Agentic Routing: Uses GPT-4o to intelligently distinguish between queries requir
 
 Domain-Specific RAG: Grounded in a curated vector database of official PDFs (IRS Pub 590, SSA Handbook), minimizing hallucinations.
 
-Hybrid Ingestion Pipeline: * Uses unstructured with Tesseract OCR (strategy='hi_res') for complex tables.
+Hybrid Ingestion Pipeline:  Uses unstructured with Tesseract OCR (strategy='hi_res') for complex tables.
 
 Implements Recursive Character Splitting for text-heavy sections.
 
