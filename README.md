@@ -16,48 +16,45 @@ This system uses a **Multi-Agent architecture** orchestrated by **LangGraph**. U
 
 ```mermaid
 graph TD
-    %% Styling
+    %% Styling Classes
     classDef ui fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
     classDef brain fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
     classDef db fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
     classDef tools fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
 
-    %% User Interaction
-    User([User]) -->|Chat & Uploads| UI[Streamlit Frontend]:::ui
-    
-    %% Main Flow
-    UI -->|Input State| Orchestrator[LangGraph Orchestrator]:::brain
-    
-    %% The Brain
+    %% Main Entry
+    UserNode([User]) -->|Chat & Uploads| UINode[Streamlit Frontend]:::ui
+    UINode -->|Input State| Orchestrator[LangGraph Orchestrator]:::brain
+
+    %% Agent Logic
     subgraph "Agentic Decision Layer"
         Orchestrator -->|Decide Next Step| Router{Router}
         Router -->|Need Rules?| Tool_RAG[RAG Retrieval Tool]:::tools
         Router -->|Need Math?| Tool_Calc[Retirement Calculator]:::tools
         Router -->|Analyze User File?| Tool_User[User Doc Tool]:::tools
-        Router -->|General Chat?| Response
+        Router -->|General Chat?| ResponseNode[Final Answer]:::brain
     end
 
-    %% Data Layer
+    %% Knowledge Base
     subgraph "Knowledge Base (ChromaDB)"
-        PDFs[Official PDFs\nIRS, SSA, Medicare] -->|Unstructured + OCR| Chunks
-        Chunks -->|OpenAI Embeddings| VectorDB[(Retirement Index)]:::db
+        PDFs[Official PDFs<br/>IRS, SSA, Medicare] -->|Unstructured + OCR| VectorDB[(Retirement Index)]:::db
         Tool_RAG <-->|MMR Search| VectorDB
     end
 
-    %% Dynamic Data
+    %% User Data
     subgraph "Ephemeral Session"
         UserUpload[User PDF] -->|Unstructured| TempDB[(In-Memory VectorStore)]:::ui
         Tool_User <--> TempDB
     end
 
-    %% Loop
+    %% Loop Back & Return
     Tool_RAG --> Orchestrator
     Tool_Calc --> Orchestrator
     Tool_User --> Orchestrator
     
-    Orchestrator -->|Final Synthesis| Response[Final Answer]:::brain
-    Response --> UI
-    
+    Orchestrator -->|Final Synthesis| ResponseNode
+    ResponseNode --> UINode
+```
 
 Key Features
 Agentic Routing: Uses GPT-4o to intelligently distinguish between queries requiring semantic search (policies) vs. deterministic calculation (savings growth).
