@@ -41,3 +41,8 @@ jobs:
     - name: Test Import Integrity
       run: |
         python -c "import src.graph; print('Graph module loads successfully')"
+
+    - name: Run Tests
+      run: |
+        pytest tests/
+        

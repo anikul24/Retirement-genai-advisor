@@ -152,5 +152,24 @@ docker run -p 8501:8501 --env-file .env retirement-advisor
 └── requirements.txt     # Python Dependencies
 ```
 
-🛡️ License
+## Local Execution/Debug
+
+Run App.py Streamlit application locally :-     
+streamlit run app.py
+
+Test modules locally ( uncomment __main__ construct)  :- 
+python .\src\tools_rag.py 
+python .\src\graph.py
+
+Execute smoke/regression testing :- 
+pytest tests/test_smoke.py
+pytest tests/test_tools.py
+
+Evaluattion:-
+src/evaluate.py
+
+## Streamlit Link
+https://retirement-genai-advisor-3wdqvsdblhmvtkcxzanodf.streamlit.app/
+
+## 🛡️ License
 This project is for educational and portfolio purposes. Not financial advice.

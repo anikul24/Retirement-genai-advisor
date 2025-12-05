@@ -1,7 +1,12 @@
+import os,sys
+
+
 import streamlit as st
-import os
 from typing import List
 from langchain_core.messages import HumanMessage, AIMessage
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_dir)
 
 ##include custom components
 from graph import create_retirement_graph
