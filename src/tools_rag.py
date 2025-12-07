@@ -7,9 +7,32 @@ from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.tools import tool
 #from langchain.chains import ConversationalRetrievalChain
-from langchain.chains import ConversationalRetrievalChain
-from langchain.memory import ConversationBufferWindowMemory
+# from langchain_classic.chains import ConversationalRetrievalChain
+# from langchain_classic.memory import ConversationBufferWindowMemory
 from dotenv import load_dotenv
+
+
+# --- Adaptive Import Logic ---
+try:
+    # 1. Try the modern/standard import (For Streamlit Cloud & updated envs)
+    from langchain.chains import ConversationalRetrievalChain
+    from langchain.memory import ConversationBufferWindowMemory
+    print("Imported chains from 'langchain'")
+except ImportError:
+    # 2. Fallback to legacy/classic import (For your local Windows env)
+    try:
+        from langchain_classic.chains import ConversationalRetrievalChain
+        from langchain_classic.memory import ConversationBufferWindowMemory
+        print("Imported chains from 'langchain_classic'")
+    except ImportError:
+        # 3. Hard fail if neither works
+        raise ImportError(
+            "Critical Error: Could not find 'ConversationalRetrievalChain'. "
+            "Ensure 'langchain' or 'langchain_classic' is installed."
+        )
+# -----------------------------
+
+
 
 load_dotenv(dotenv_path="./cred.env")
 

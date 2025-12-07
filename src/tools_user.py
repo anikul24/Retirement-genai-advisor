@@ -31,7 +31,7 @@ def processing_uploaded_file(file_path: str) -> List[str]:
 
         loader = UnstructuredFileLoader(
             file_path=file_path,
-            strategy="fast",
+            strategy="hi_res",
             mode="elements",
         )
 
