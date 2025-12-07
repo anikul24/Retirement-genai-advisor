@@ -33,10 +33,11 @@ def processing_uploaded_file(file_path: str) -> List[str]:
             file_path=file_path,
             strategy="hi_res",
             mode="elements",
+            infer_table_structure=True,
         )
 
         docs = loader.load()
-        splitter = RecursiveCharacterTextSplitter(chunk_size=2000, chunk_overlap=200)
+        splitter = RecursiveCharacterTextSplitter(chunk_size=4000, chunk_overlap=200)
         chunks = splitter.split_documents(docs)
         return chunks
 
