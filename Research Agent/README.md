@@ -1,3 +1,10 @@
+
+![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
+![LangChain](https://img.shields.io/badge/LangChain-v0.1-green)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agentic-orange)
+![SERPAPI](https://img.shields.io/badge/SERPAPI-WebSearch-red)
+
+
 ## 🚀 Agentic Research Assistant — Multi-Tool GenAI System Using LangGraph
 
 This project implements an Agentic AI system capable of autonomous reasoning, multi-step decision-making, and retrieving information from multiple sources (RAG, Arxiv API, Web Search).

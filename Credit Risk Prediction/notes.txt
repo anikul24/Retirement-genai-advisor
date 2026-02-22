@@ -108,3 +108,35 @@ also in cell 114 query is as below
 df.head()
 
 so there is no issue of uppercase. I checked snowflake query history after write_pands , its not showing anything on snowflake query history , that means something is missing and not reaching even till snowflake	
+
+
+STAR topics and my projects---
+
+--Ownership
+--Tell me about a time you took ownership of a project outside your responsibilities.
+spark migration from hql ( hive sql ) jobs
+
+
+--Invent and Simplify-
+--Share an example of a time you simplified a complex process.
+manual work of file producing and keeping it in server - automated
+
+
+--Are Right, A Lot
+-- Can you provide an example where you made a well-informed decision that led to success?
+design decision in hash in SDM for composite key columns, 
+orchestration depedency matrix
+approach for data security in share
+raw, cur and app layer components
+
+--Learn and Be Curious
+--Tell me about a time you learned a new skill to solve a problem.
+MOVEit server configurations
+spark
+AWS components
+
+
+--How have you helped someone on your team grow professionally?
+documentation on accesses
+
+
